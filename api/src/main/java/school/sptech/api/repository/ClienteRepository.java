@@ -33,21 +33,26 @@ public class ClienteRepository {
     }
 
     public Cliente save(Cliente cliente) {
-//        if(cliente.getId() != null && findById(cliente.getId()) != null) {
-//            String sql = "UPDATE clientes set nome = ?, peso = ?, objetivo =?, frequenciaMusculacao = ?,percentualGordura = ?";
-//            jdbcTemplate.update(sql, cliente.getNome(), cliente.getPeso(), cliente.getObjetivo(),
-//                    cliente.getFrequenciaMusculacao(), cliente.getPercentualGordura());
-//            return cliente;
-//        }
 
-        String sql = "INSERT INTO clientes (nome,peso,objetivo,frequenciaMusculacao,percentualGordura) VALUES (?,?,?,?,?)";
+        String sql = "INSERT INTO clientes (nome,peso,objetivo,frequenciaMusculacao,percentualGordura,proteinaDiaria) VALUES (?,?,?,?,?,?)";
+
         KeyHolder keyHolder = new GeneratedKeyHolder();
+
         jdbcTemplate.update(con ->{
             PreparedStatement ps = con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
-        })
 
+            ps.setString(1,cliente.getNome());
+            ps.setDouble(2,cliente.getPeso());
+            ps.setString(3,cliente.getObjetivo());
+            ps.setInt(4,cliente.getFrequenciaMusculacao());
+            ps.setObject(5,cliente.getPercentualGordura());
+            ps.setInt(6,cliente.getProteinaDiaria());
+            return ps;
+        }, keyHolder);
 
-
-
+        cliente.setId(keyHolder.getKey().intValue());
+        return cliente;
     }
+
+
 }

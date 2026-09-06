@@ -1,0 +1,26 @@
+info:
+  name: Criar ficha sem BF
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: http://localhost:8080/fichas
+  body:
+    type: json
+    data: |-
+      {
+        "nome": "Gabriel Medina",
+        "peso": 78,
+        "objetivo": "Manutenção",
+        "frequenciaMusculacao": 4
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: This request retrieves a list of users from the JSONPlaceholder API.

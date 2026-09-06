@@ -1,0 +1,27 @@
+info:
+  name: Criar ficha com BF
+  type: http
+  seq: 3
+
+http:
+  method: POST
+  url: http://localhost:8080/fichas
+  body:
+    type: json
+    data: |+
+      {
+        "nome": "Vivi Winkler",
+        "peso": 65,
+        "objetivo": "Cutting",
+        "frequenciaMusculacao": 6,
+        "percentualGordura": 18
+      }
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: true
+
+docs: This request retrieves a list of users from the JSONPlaceholder API.
