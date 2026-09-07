@@ -1,0 +1,15 @@
+.lista {
+    max-width: 900px;
+    margin: 30px auto;
+}
+
+.lista h2 {
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    justify-content: center;
+}
